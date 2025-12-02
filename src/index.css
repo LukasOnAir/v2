@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* Class-based dark mode (always dark for this app) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Surface colors - very dark backgrounds */
+  --color-surface-base: #0a0a0a;
+  --color-surface-elevated: #121212;
+  --color-surface-overlay: #1a1a1a;
+  --color-surface-border: #27272a;
+
+  /* Amber accent palette (Holland Casino brand) */
+  --color-accent-50: oklch(0.987 0.022 95.277);
+  --color-accent-100: oklch(0.962 0.059 95.617);
+  --color-accent-200: oklch(0.924 0.12 95.746);
+  --color-accent-300: oklch(0.879 0.169 91.605);
+  --color-accent-400: oklch(0.828 0.189 84.429);
+  --color-accent-500: oklch(0.769 0.188 70.08);
+  --color-accent-600: oklch(0.666 0.179 58.318);
+  --color-accent-700: oklch(0.555 0.163 48.998);
+  --color-accent-800: oklch(0.473 0.137 46.201);
+  --color-accent-900: oklch(0.414 0.112 45.904);
+
+  /* Text colors */
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    @apply bg-surface-base text-text-primary;
+    /* Firefox scrollbar */
+    scrollbar-color: #27272a #0a0a0a;
+    scrollbar-width: thin;
+  }
+
+  body {
+    @apply antialiased;
+    margin: 0;
+  }
+
+  /* Dark scrollbar styles (WebKit/Chromium) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #0a0a0a;
+  }
+}

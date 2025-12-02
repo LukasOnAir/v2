@@ -1,0 +1,30 @@
+[api]
+enabled = true
+port = 54321
+
+[db]
+port = 54322
+
+[studio]
+enabled = true
+port = 54323
+
+# Edge Function configurations
+# JWT verification is handled within the function code itself
+# (verifies user is director with valid tenant)
+[functions.send-invitation]
+verify_jwt = false
+
+[functions.accept-invitation]
+verify_jwt = false
+
+# Triggered notifications for approval/assignment events
+# JWT verification is handled within the function code
+[functions.send-notification]
+verify_jwt = false
+
+# Scheduled reminder batch processor
+# Called by pg_cron (service role auth) or Vercel cron (secret header)
+# No JWT - authentication handled in function code
+[functions.process-reminders]
+verify_jwt = false
